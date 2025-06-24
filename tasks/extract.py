@@ -571,7 +571,7 @@ class FetchFundingOpportunities(luigi.Task):
     
     max_pages = luigi.IntParameter(default=None)
     page_size = luigi.IntParameter(default=50)
-    output_file = luigi.Parameter(default="data/raw/calls_raw.json")
+    output_file = luigi.Parameter(default="calls_raw.json")
     
     def run(self):
         scraper = FundingOpportunitiesScraper()
