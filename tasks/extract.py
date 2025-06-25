@@ -27,8 +27,10 @@ class FundingOpportunitiesScraper:
         self.driver = None
     
     def setup_driver(self):
-        """Initialize Chrome driver with options"""
+        """Initialize Chromium driver with options"""
         chrome_options = Options()
+        chrome_options.binary_location = "/snap/bin/chromium"  # Set Chromium binary location
+    
         if self.headless:
             chrome_options.add_argument("--headless")
         chrome_options.add_argument("--no-sandbox")
@@ -38,11 +40,10 @@ class FundingOpportunitiesScraper:
         chrome_options.add_argument("--disable-extensions")
         chrome_options.add_argument("--disable-logging")
         chrome_options.add_argument("--window-size=1920,1080")
-        
-        self.driver = webdriver.Chrome(
-            service=Service(ChromeDriverManager().install()), 
-            options=chrome_options
-        )
+    
+        # Use the known chromedriver path
+        service = Service("/usr/bin/chromedriver")
+        self.driver = webdriver.Chrome(service=service, options=chrome_options)
         return self.driver
     
     @contextmanager
