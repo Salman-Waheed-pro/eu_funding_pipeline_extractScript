@@ -40,6 +40,10 @@ class FundingOpportunitiesScraper:
         chrome_options.add_argument("--disable-extensions")
         chrome_options.add_argument("--disable-logging")
         chrome_options.add_argument("--window-size=1920,1080")
+
+        # A unique temporary directory for user data
+        user_data_dir = tempfile.mkdtemp()
+        chrome_options.add_argument(f"--user-data-dir={user_data_dir}")
     
         # Use the known chromedriver path
         service = Service("/usr/bin/chromedriver")
