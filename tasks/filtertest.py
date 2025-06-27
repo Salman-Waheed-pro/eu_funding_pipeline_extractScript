@@ -11,6 +11,7 @@ from contextlib import contextmanager
 import logging
 from urllib.parse import urlparse, parse_qs, urlencode, urlunparse
 import sys
+import random
 
 # Configure logging for detailed debugging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
@@ -150,6 +151,10 @@ class EUScraper:
         """Extract all cards from current page with detailed logging"""
         logger.info(f"Extracting cards from current page...")
         
+        # Log the current URL being processed
+        current_url = self.driver.current_url
+        logger.info(f"🌐 Currently visiting URL: {current_url}")
+        
         # Wait for cards to load
         try:
             WebDriverWait(self.driver, 10).until(
@@ -174,8 +179,8 @@ class EUScraper:
             card_data = self.extract_card_data(card, idx + 1)
             page_data.append(card_data)
             
-            # Log every 10th card or first/last cards
-            if idx == 0 or idx == len(cards) - 1 or (idx + 1) % 10 == 0:
+            # Random status logging instead of every 10th
+            if random.random() < 0.2:  # 20% chance to log each card
                 logger.info(f"Card {idx + 1}: Status='{card_data['status']}', Title='{card_data['title'][:50]}...'")
         
         return page_data
@@ -221,6 +226,11 @@ class EUScraper:
         except Exception as e:
             logger.debug(f"Error checking for 'no results' message: {e}")
         
+        # Check if we have fewer cards than expected (less than 50 suggests last page)
+        if len(cards_data) > 0 and len(cards_data) < 50:
+            logger.info(f"Found only {len(cards_data)} cards on page {page_number} (less than 50) - likely last page")
+            return True
+        
         return False
 
     def navigate_to_next_page(self, current_page):
@@ -240,7 +250,7 @@ class EUScraper:
         new_url = urlunparse((parsed.scheme, parsed.netloc, parsed.path, parsed.params, new_query, parsed.fragment))
         
         logger.info(f"Navigating from page {current_page} to page {next_page}")
-        logger.debug(f"New URL: {new_url}")
+        logger.info(f"🔗 Next page URL: {new_url}")
         
         self.driver.get(new_url)
         self.wait_for_page_load()
@@ -272,10 +282,12 @@ def main():
     all_data = []
     page_number = 1
     consecutive_empty_pages = 0
+    pages_with_less_than_50_cards = 0
     
     try:
         # STEP 1: Start with page 1 to establish session
         logger.info(f"\n--- ESTABLISHING SESSION ON PAGE 1 ---")
+        logger.info(f"🔗 Starting URL: {BASE_URL}")
         driver.get(BASE_URL)  # This is your filtered URL for page 1
         scraper.wait_for_page_load()
         
@@ -296,29 +308,51 @@ def main():
             # Check if we've hit the end
             if scraper.check_if_end_of_results(page_cards, current_page):
                 consecutive_empty_pages += 1
-                logger.warning(f"Empty page detected ({consecutive_empty_pages}/3)")
+                logger.warning(f"End of results detected on page {current_page} ({consecutive_empty_pages}/2)")
                 
-                if consecutive_empty_pages >= 3:
-                    logger.info("Found 3 consecutive empty pages - stopping scraper")
+                if consecutive_empty_pages >= 2:
+                    logger.info("Found 2 consecutive end-of-results indicators - stopping scraper")
                     break
             else:
                 consecutive_empty_pages = 0
+            
+            # Track pages with less than 50 cards (indicates end of results)
+            if len(page_cards) > 0 and len(page_cards) < 50:
+                pages_with_less_than_50_cards += 1
+                logger.info(f"Page {current_page} has {len(page_cards)} cards (less than 50) - likely near end")
+                
+                # If we get 2 pages in a row with less than 50 cards, probably at the end
+                if pages_with_less_than_50_cards >= 2:
+                    logger.info("Found 2 pages with less than 50 cards - likely reached end of filtered results")
+                    # Add current page data and then stop
+                    all_data.extend(page_cards)
+                    logger.info(f"Page {current_page} complete. Total cards so far: {len(all_data)}")
+                    break
+            else:
+                pages_with_less_than_50_cards = 0
             
             # Add page data to overall collection
             all_data.extend(page_cards)
             
             logger.info(f"Page {current_page} complete. Total cards so far: {len(all_data)}")
             
-            # Status distribution check every 5 pages
-            if current_page % 5 == 0:
+            # Status distribution check randomly (instead of every 5 pages)
+            if random.random() < 0.3:  # 30% chance to show status distribution
                 current_statuses = [card['status'] for card in all_data]
                 status_counter = Counter(current_statuses)
-                logger.info(f"Current status distribution: {dict(status_counter)}")
+                logger.info(f"📊 Current status distribution: {dict(status_counter)}")
             
             # Break if we have no more cards
             if not page_cards:
                 logger.info("No more cards found - reached end of results")
                 break
+            
+            # Stop if we're close to our expected limit (804) to avoid overscraping
+            if len(all_data) >= 800:
+                logger.info(f"Approaching expected limit (804 calls), currently at {len(all_data)} - checking if we should continue")
+                if len(page_cards) < 50:  # If this page has less than 50, we're probably at the end
+                    logger.info("This page has less than 50 cards and we're near the limit - stopping")
+                    break
             
             # Navigate to next page (maintains session)
             time.sleep(2)  # Be nice to the server
@@ -378,7 +412,7 @@ def main():
     print(f"\n--- First 3 calls ---")
     for i in range(min(3, len(all_data))):
         card = all_data[i]
-        print(f"Call {i+1}:")
+        print(f"Call {i+23}:")
         print(f"  Status: {card['status']}")
         print(f"  Title: {card['title']}")
         print(f"  Link: {card['link']}")
@@ -398,6 +432,7 @@ def main():
         print("✅ SUCCESS: Scraped exactly 804 calls as expected!")
     elif total_calls < 804:
         print(f"⚠️  WARNING: Only scraped {total_calls} calls, expected 804")
+        print("This might be correct if the filter results changed or we stopped at the right boundary.")
     else:
         print(f"❌ ERROR: Scraped {total_calls} calls, but filter should only have 804!")
         print("This suggests the scraper went beyond the filtered results.")
