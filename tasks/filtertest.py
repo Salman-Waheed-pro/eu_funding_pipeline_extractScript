@@ -8,25 +8,70 @@ import time
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 
-options = Options()
-options.add_argument("--headless=new")  # or just --headless
-options.add_argument("--no-sandbox")
-options.add_argument("--disable-dev-shm-usage")
-
 # ---- CONFIGURATION ----
 URL = 'https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/calls-for-proposals?order=DESC&pageNumber=1&pageSize=50&sortBy=startDate&isExactMatch=true&status=31094501,31094502'
 HEADLESS = True
 MAX_CALLS = 820
 # -----------------------
 
-def get_driver(headless=True):
-    options = Options()
-    if headless:
-        options.add_argument("--headless")
-    options.add_argument("--no-sandbox")
-    options.add_argument("--disable-dev-shm-usage")
-    options.add_argument("--window-size=1920,1080")
-    return webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
+def setup_driver(self):
+        """Initialize Chromium driver with options"""
+        chrome_options = Options()
+        chrome_options.binary_location = "/usr/bin/chromium-browser"  # Chromium binary locaion
+    
+        if self.headless:
+            chrome_options.add_argument("--headless")
+        chrome_options.add_argument("--no-sandbox")
+        chrome_options.add_argument("--disable-dev-shm-usage")
+        chrome_options.add_argument("--disable-gpu")
+        chrome_options.add_argument("--disable-software-rasterizer")
+        chrome_options.add_argument("--disable-extensions")
+        chrome_options.add_argument("--disable-logging")
+        chrome_options.add_argument("--window-size=1920,1080")
+
+        # A unique temporary directory for user data
+        user_data_dir = tempfile.mkdtemp()
+        chrome_options.add_argument(f"--user-data-dir={user_data_dir}")
+    
+        # Use the known chromedriver path
+        service = Service("/usr/bin/chromedriver")
+        self.driver = webdriver.Chrome(service=service, options=chrome_options)
+        return self.driver
+    
+    @contextmanager
+    def tab_context(self, url):
+        """Context manager for handling new tabs safely"""
+        original_windows = self.driver.window_handles.copy()
+        try:
+            self.driver.execute_script(f"window.open('{url}', '_blank');")
+            self.driver.switch_to.window(self.driver.window_handles[-1])
+            yield
+        finally:
+            # Close any new tabs and return to original
+            current_windows = self.driver.window_handles
+            for window in current_windows:
+                if window not in original_windows:
+                    self.driver.switch_to.window(window)
+                    self.driver.close()
+            if original_windows:
+                self.driver.switch_to.window(original_windows[0])
+    
+    def safe_find_element(self, by, value, parent=None, default=""):
+        """Safely find element with default fallback"""
+        try:
+            element = (parent or self.driver).find_element(by, value)
+            return element.text.strip() if hasattr(element, 'text') else str(element)
+        except Exception as e:
+            logger.debug(f"Element not found: {by}={value}, error: {e}")
+            return default
+    
+    def safe_find_elements(self, by, value, parent=None):
+        """Safely find elements with empty list fallback"""
+        try:
+            return (parent or self.driver).find_elements(by, value)
+        except Exception as e:
+            logger.debug(f"Elements not found: {by}={value}, error: {e}")
+            return []
 
 def main():
     driver = get_driver(HEADLESS)
