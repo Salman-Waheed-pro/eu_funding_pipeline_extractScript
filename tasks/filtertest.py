@@ -5,8 +5,6 @@ from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 from collections import Counter
 import time
-from selenium import webdriver
-from selenium.webdriver.chrome.options import Options
 import tempfile
 from contextlib import contextmanager
 import logging
@@ -19,11 +17,16 @@ HEADLESS = True
 MAX_CALLS = 820
 # -----------------------
 
-def setup_driver(self):
+class EUScraper:
+    def __init__(self, headless=True):
+        self.headless = headless
+        self.driver = None
+    
+    def setup_driver(self):
         """Initialize Chromium driver with options"""
         chrome_options = Options()
-        chrome_options.binary_location = "/usr/bin/chromium-browser"  # Chromium binary locaion
-    
+        chrome_options.binary_location = "/usr/bin/chromium-browser"  # Chromium binary location
+        
         if self.headless:
             chrome_options.add_argument("--headless")
         chrome_options.add_argument("--no-sandbox")
@@ -33,11 +36,11 @@ def setup_driver(self):
         chrome_options.add_argument("--disable-extensions")
         chrome_options.add_argument("--disable-logging")
         chrome_options.add_argument("--window-size=1920,1080")
-
+        
         # A unique temporary directory for user data
         user_data_dir = tempfile.mkdtemp()
         chrome_options.add_argument(f"--user-data-dir={user_data_dir}")
-    
+        
         # Use the known chromedriver path
         service = Service("/usr/bin/chromedriver")
         self.driver = webdriver.Chrome(service=service, options=chrome_options)
@@ -60,7 +63,7 @@ def setup_driver(self):
                     self.driver.close()
             if original_windows:
                 self.driver.switch_to.window(original_windows[0])
-    
+
     def safe_find_element(self, by, value, parent=None, default=""):
         """Safely find element with default fallback"""
         try:
@@ -69,7 +72,7 @@ def setup_driver(self):
         except Exception as e:
             logger.debug(f"Element not found: {by}={value}, error: {e}")
             return default
-    
+
     def safe_find_elements(self, by, value, parent=None):
         """Safely find elements with empty list fallback"""
         try:
@@ -79,85 +82,91 @@ def setup_driver(self):
             return []
 
 def main():
-    driver = get_driver(HEADLESS)
+    scraper = EUScraper(HEADLESS)
+    driver = scraper.setup_driver()
+    
     all_statuses = []
     all_titles = []
     all_links = []
     call_count = 0
     page_number = 1
 
-    while call_count < MAX_CALLS:
-        url = (
-            f"https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/"
-            f"opportunities/calls-for-proposals?order=DESC&pageNumber={page_number}"
-            f"&pageSize=50&sortBy=startDate&isExactMatch=true&status=31094501,31094502"
-        )
-        driver.get(url)
-        time.sleep(3)  # Use WebDriverWait in production
+    try:
+        while call_count < MAX_CALLS:
+            url = (
+                f"https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/"
+                f"opportunities/calls-for-proposals?order=DESC&pageNumber={page_number}"
+                f"&pageSize=50&sortBy=startDate&isExactMatch=true&status=31094501,31094502"
+            )
+            driver.get(url)
+            time.sleep(3)  # Use WebDriverWait in production
 
-        cards = driver.find_elements(By.CSS_SELECTOR, "eui-card")
-        if not cards:
-            break
-
-        for card in cards:
-            if call_count >= MAX_CALLS:
+            cards = driver.find_elements(By.CSS_SELECTOR, "eui-card")
+            if not cards:
                 break
-            # Status
-            try:
-                status_elem = card.find_element(By.CSS_SELECTOR, "span.eui-label")
-                status = status_elem.text.strip()
-            except:
-                status = "UNKNOWN"
-            all_statuses.append(status)
-            # Title
-            try:
-                title_elem = card.find_element(By.CSS_SELECTOR, "a.eui-u-text-link")
-                title = title_elem.text.strip()
-            except:
-                title = "UNKNOWN"
-            all_titles.append(title)
-            # Link
-            try:
-                link_elem = card.find_element(By.CSS_SELECTOR, "a.eui-u-text-link")
-                link = link_elem.get_attribute("href")
-            except:
-                link = "UNKNOWN"
-            all_links.append(link)
-            call_count += 1
 
-        page_number += 1
+            for card in cards:
+                if call_count >= MAX_CALLS:
+                    break
+                # Status
+                try:
+                    status_elem = card.find_element(By.CSS_SELECTOR, "span.eui-label")
+                    status = status_elem.text.strip()
+                except:
+                    status = "UNKNOWN"
+                all_statuses.append(status)
+                
+                # Title
+                try:
+                    title_elem = card.find_element(By.CSS_SELECTOR, "a.eui-u-text-link")
+                    title = title_elem.text.strip()
+                except:
+                    title = "UNKNOWN"
+                all_titles.append(title)
+                
+                # Link
+                try:
+                    link_elem = card.find_element(By.CSS_SELECTOR, "a.eui-u-text-link")
+                    link = link_elem.get_attribute("href")
+                except:
+                    link = "UNKNOWN"
+                all_links.append(link)
+                call_count += 1
 
-    # Print total
-    print(f"Total calls (up to {MAX_CALLS}): {len(all_statuses)}")
+            page_number += 1
 
-    # Count each status
-    counter = Counter(all_statuses)
-    print("Status counts:")
-    for status, count in counter.items():
-        print(f"- {status}: {count}")
+        # Print total
+        print(f"Total calls (up to {MAX_CALLS}): {len(all_statuses)}")
 
-    # Find changes in status
-    changes = []
-    prev = None
-    for idx, status in enumerate(all_statuses):
-        if prev is not None and status != prev:
-            changes.append(idx)
-        prev = status
-    print(f"Total number of status changes: {len(changes)}")
-    print("Status changed after cards (1-based index):", [i+1 for i in changes])
+        # Count each status
+        counter = Counter(all_statuses)
+        print("Status counts:")
+        for status, count in counter.items():
+            print(f"- {status}: {count}")
 
-    # Print details of last call
-    if all_statuses:
-        last_idx = len(all_statuses) - 1
-        print("\n--- Details of the last call ---")
-        print(f"Index: {last_idx+1}")
-        print(f"Title: {all_titles[last_idx]}")
-        print(f"Status: {all_statuses[last_idx]}")
-        print(f"Link: {all_links[last_idx]}")
-    else:
-        print("No calls found.")
+        # Find changes in status
+        changes = []
+        prev = None
+        for idx, status in enumerate(all_statuses):
+            if prev is not None and status != prev:
+                changes.append(idx)
+            prev = status
+        print(f"Total number of status changes: {len(changes)}")
+        print("Status changed after cards (1-based index):", [i+1 for i in changes])
 
-    driver.quit()
+        # Print details of last call
+        if all_statuses:
+            last_idx = len(all_statuses) - 1
+            print("\n--- Details of the last call ---")
+            print(f"Index: {last_idx+1}")
+            print(f"Title: {all_titles[last_idx]}")
+            print(f"Status: {all_statuses[last_idx]}")
+            print(f"Link: {all_links[last_idx]}")
+        else:
+            print("No calls found.")
+
+    finally:
+        driver.quit()
 
 if __name__ == "__main__":
     main()
