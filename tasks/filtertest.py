@@ -7,6 +7,11 @@ from collections import Counter
 import time
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
+import tempfile
+from contextlib import contextmanager
+import logging
+
+logger = logging.getLogger(__name__)
 
 # ---- CONFIGURATION ----
 URL = 'https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/calls-for-proposals?order=DESC&pageNumber=1&pageSize=50&sortBy=startDate&isExactMatch=true&status=31094501,31094502'
