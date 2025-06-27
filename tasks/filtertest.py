@@ -211,9 +211,55 @@ class EUScraper:
         if not cards_data:
             logger.info(f"No cards found on page {page_number} - likely end of results")
             return True
-            
-        # Additional checks could be added here (e.g., checking for "No results" message)
+        
+        # Check for "No results" or similar messages on the page
+        try:
+            no_results_elements = self.driver.find_elements(By.XPATH, "//*[contains(text(), 'No results') or contains(text(), 'no results') or contains(text(), 'No calls')]")
+            if no_results_elements:
+                logger.info(f"Found 'no results' message on page {page_number}")
+                return True
+        except Exception as e:
+            logger.debug(f"Error checking for 'no results' message: {e}")
+        
         return False
+
+    def navigate_to_next_page(self, current_page):
+        """Navigate from current page to next page maintaining session"""
+        next_page = current_page + 1
+        
+        # Get current URL and modify only the pageNumber parameter
+        current_url = self.driver.current_url
+        parsed = urlparse(current_url)
+        params = parse_qs(parsed.query)
+        
+        # Update page number
+        params['pageNumber'] = [str(next_page)]
+        
+        # Rebuild URL with new page number
+        new_query = urlencode(params, doseq=True)
+        new_url = urlunparse((parsed.scheme, parsed.netloc, parsed.path, parsed.params, new_query, parsed.fragment))
+        
+        logger.info(f"Navigating from page {current_page} to page {next_page}")
+        logger.debug(f"New URL: {new_url}")
+        
+        self.driver.get(new_url)
+        self.wait_for_page_load()
+        
+        return next_page
+    
+    def validate_current_page(self, expected_page):
+        """Validate we're on the expected page and not redirected"""
+        current_url = self.driver.current_url
+        
+        # Check if we got redirected to page 1
+        if expected_page > 1:
+            if f"pageNumber={expected_page}" not in current_url:
+                if "pageNumber=1" in current_url or "pageNumber" not in current_url:
+                    logger.error(f"REDIRECT DETECTED: Expected page {expected_page}, but on page 1")
+                    return False
+        
+        logger.debug(f"Successfully on page {expected_page}")
+        return True
 
 def main():
     logger.info("="*60)
@@ -228,37 +274,27 @@ def main():
     consecutive_empty_pages = 0
     
     try:
+        # STEP 1: Start with page 1 to establish session
+        logger.info(f"\n--- ESTABLISHING SESSION ON PAGE 1 ---")
+        driver.get(BASE_URL)  # This is your filtered URL for page 1
+        scraper.wait_for_page_load()
+        
+        current_page = 1
+        
+        # STEP 2: Sequential navigation through pages
         while len(all_data) < MAX_CALLS:
-            logger.info(f"\n--- PROCESSING PAGE {page_number} ---")
+            logger.info(f"\n--- PROCESSING PAGE {current_page} ---")
             
-            # Build and navigate to URL
-            url = scraper._build_paginated_url(page_number)
-            logger.info(f"Navigating to: {url}")
-            
-            driver.get(url)
-            scraper.wait_for_page_load()
-            
-            # Verify we're on the correct page (check for unexpected redirects)
-            actual_url = driver.current_url
-            if f"pageNumber={page_number}" not in actual_url:
-                logger.warning(f"URL REDIRECT DETECTED!")
-                logger.warning(f"Expected page {page_number}, but current URL is: {actual_url}")
-                
-                # Check if we got redirected to page 1
-                if "pageNumber=1" in actual_url or "pageNumber" not in actual_url:
-                    logger.error(f"Redirected to page 1 - this suggests URL format issue")
-                    logger.error(f"Original URL: {url}")
-                    logger.error(f"Redirected URL: {actual_url}")
-                    break
-            
-            # Get page info for debugging
-            page_info = scraper.get_page_info()
+            # Validate we're on the expected page
+            if not scraper.validate_current_page(current_page):
+                logger.error("Page validation failed - stopping scraper")
+                break
             
             # Extract cards from current page
             page_cards = scraper.extract_cards_from_page()
             
             # Check if we've hit the end
-            if scraper.check_if_end_of_results(page_cards, page_number):
+            if scraper.check_if_end_of_results(page_cards, current_page):
                 consecutive_empty_pages += 1
                 logger.warning(f"Empty page detected ({consecutive_empty_pages}/3)")
                 
@@ -271,20 +307,26 @@ def main():
             # Add page data to overall collection
             all_data.extend(page_cards)
             
-            logger.info(f"Page {page_number} complete. Total cards so far: {len(all_data)}")
+            logger.info(f"Page {current_page} complete. Total cards so far: {len(all_data)}")
             
             # Status distribution check every 5 pages
-            if page_number % 5 == 0:
+            if current_page % 5 == 0:
                 current_statuses = [card['status'] for card in all_data]
                 status_counter = Counter(current_statuses)
                 logger.info(f"Current status distribution: {dict(status_counter)}")
             
             # Break if we have no more cards
             if not page_cards:
+                logger.info("No more cards found - reached end of results")
                 break
-                
-            page_number += 1
+            
+            # Navigate to next page (maintains session)
             time.sleep(2)  # Be nice to the server
+            try:
+                current_page = scraper.navigate_to_next_page(current_page)
+            except Exception as e:
+                logger.error(f"Failed to navigate to next page: {e}")
+                break
 
     except KeyboardInterrupt:
         logger.info("Scraping interrupted by user")
