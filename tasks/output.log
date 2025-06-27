@@ -1,49 +1,41 @@
-2025-06-25 10:09:11,609 - INFO - logging configured by default settings
+2025-06-26 08:12:27,477 - INFO - logging configured by default settings
 DEBUG: Checking if FetchFundingOpportunities(max_pages=None, page_size=50, output_file=calls_raw.json) is complete
-2025-06-25 10:09:11,615 - DEBUG - Checking if FetchFundingOpportunities(max_pages=None, page_size=50, output_file=calls_raw.json) is complete
+2025-06-26 08:12:27,483 - DEBUG - Checking if FetchFundingOpportunities(max_pages=None, page_size=50, output_file=calls_raw.json) is complete
 INFO: Informed scheduler that task   FetchFundingOpportunities_None_calls_raw_json_50_8fc9b45bdb   has status   PENDING
-2025-06-25 10:09:11,616 - INFO - Informed scheduler that task   FetchFundingOpportunities_None_calls_raw_json_50_8fc9b45bdb   has status   PENDING
+2025-06-26 08:12:27,483 - INFO - Informed scheduler that task   FetchFundingOpportunities_None_calls_raw_json_50_8fc9b45bdb   has status   PENDING
 INFO: Done scheduling tasks
-2025-06-25 10:09:11,616 - INFO - Done scheduling tasks
+2025-06-26 08:12:27,484 - INFO - Done scheduling tasks
 INFO: Running Worker with 1 processes
-2025-06-25 10:09:11,616 - INFO - Running Worker with 1 processes
+2025-06-26 08:12:27,484 - INFO - Running Worker with 1 processes
 DEBUG: Asking scheduler for work...
-2025-06-25 10:09:11,616 - DEBUG - Asking scheduler for work...
+2025-06-26 08:12:27,484 - DEBUG - Asking scheduler for work...
 DEBUG: Pending tasks: 1
-2025-06-25 10:09:11,616 - DEBUG - Pending tasks: 1
-INFO: [pid 1412750] Worker Worker(salt=1324710524, workers=1, host=ip-10-0-1-46, username=ubuntu, pid=1412750) running   FetchFundingOpportunities(max_pages=None, page_size=50, output_file=calls_raw.json)
-2025-06-25 10:09:11,616 - INFO - [pid 1412750] Worker Worker(salt=1324710524, workers=1, host=ip-10-0-1-46, username=ubuntu, pid=1412750) running   FetchFundingOpportunities(max_pages=None, page_size=50, output_file=calls_raw.json)
-2025-06-25 10:09:11,616 - INFO - ====== WebDriver manager ======
-2025-06-25 10:09:11,628 - INFO - Get LATEST chromedriver version for google-chrome
-2025-06-25 10:09:11,656 - INFO - About to download new driver from https://chromedriver.storage.googleapis.com/114.0.5735.90/chromedriver_linux64.zip
-2025-06-25 10:09:11,678 - INFO - Driver downloading response is 200
-2025-06-25 10:09:11,751 - INFO - Get LATEST chromedriver version for google-chrome
-2025-06-25 10:09:11,908 - INFO - Get LATEST chromedriver version for google-chrome
-2025-06-25 10:09:11,935 - INFO - Driver has been saved in cache [/home/ubuntu/.wdm/drivers/chromedriver/linux64/114.0.5735.90]
-2025-06-25 10:10:12,037 - ERROR - Fatal error in scraping process: Message: unknown error: DevToolsActivePort file doesn't exist
+2025-06-26 08:12:27,484 - DEBUG - Pending tasks: 1
+INFO: [pid 1419407] Worker Worker(salt=9377629313, workers=1, host=ip-10-0-1-46, username=ubuntu, pid=1419407) running   FetchFundingOpportunities(max_pages=None, page_size=50, output_file=calls_raw.json)
+2025-06-26 08:12:27,484 - INFO - [pid 1419407] Worker Worker(salt=9377629313, workers=1, host=ip-10-0-1-46, username=ubuntu, pid=1419407) running   FetchFundingOpportunities(max_pages=None, page_size=50, output_file=calls_raw.json)
+2025-06-26 08:12:27,708 - ERROR - Fatal error in scraping process: Message: session not created
+from unknown error: no chrome binary at /usr/bin/chromium
 Stacktrace:
-#0 0x5c6ba64ab4e3 <unknown>
-#1 0x5c6ba61dac76 <unknown>
-#2 0x5c6ba6207019 <unknown>
-#3 0x5c6ba62032fa <unknown>
-#4 0x5c6ba6200029 <unknown>
-#5 0x5c6ba623eccc <unknown>
-#6 0x5c6ba623e47f <unknown>
-#7 0x5c6ba6235de3 <unknown>
-#8 0x5c6ba620b2dd <unknown>
-#9 0x5c6ba620c34e <unknown>
-#10 0x5c6ba646b3e4 <unknown>
-#11 0x5c6ba646f3d7 <unknown>
-#12 0x5c6ba6479b20 <unknown>
-#13 0x5c6ba6470023 <unknown>
-#14 0x5c6ba643e1aa <unknown>
-#15 0x5c6ba64946b8 <unknown>
-#16 0x5c6ba6494847 <unknown>
-#17 0x5c6ba64a4243 <unknown>
-#18 0x7df2de49caa4 <unknown>
-#19 0x7df2de529c3c <unknown>
+#0 0x59f1c4ea667a <unknown>
+#1 0x59f1c4972cd0 <unknown>
+#2 0x59f1c49a9947 <unknown>
+#3 0x59f1c49a7d58 <unknown>
+#4 0x59f1c49f7464 <unknown>
+#5 0x59f1c49f6b86 <unknown>
+#6 0x59f1c49e89f3 <unknown>
+#7 0x59f1c49b5534 <unknown>
+#8 0x59f1c49b6191 <unknown>
+#9 0x59f1c4e6deef <unknown>
+#10 0x59f1c4e71f98 <unknown>
+#11 0x59f1c4e550f2 <unknown>
+#12 0x59f1c4e7273e <unknown>
+#13 0x59f1c4e3c0be <unknown>
+#14 0x59f1c4e94c68 <unknown>
+#15 0x59f1c4e94e78 <unknown>
+#16 0x59f1c4ea511c <unknown>
+#17 0x7aaa29142ac3 <unknown>
 
-ERROR: [pid 1412750] Worker Worker(salt=1324710524, workers=1, host=ip-10-0-1-46, username=ubuntu, pid=1412750) failed    FetchFundingOpportunities(max_pages=None, page_size=50, output_file=calls_raw.json)
+ERROR: [pid 1419407] Worker Worker(salt=9377629313, workers=1, host=ip-10-0-1-46, username=ubuntu, pid=1419407) failed    FetchFundingOpportunities(max_pages=None, page_size=50, output_file=calls_raw.json)
 Traceback (most recent call last):
   File "/home/ubuntu/CallsForProposals/eu_funding_pipeline_extractScript/tasks/.venv/lib/python3.12/site-packages/luigi/worker.py", line 210, in run
     new_deps = self._run_get_new_deps()
@@ -51,11 +43,11 @@ Traceback (most recent call last):
   File "/home/ubuntu/CallsForProposals/eu_funding_pipeline_extractScript/tasks/.venv/lib/python3.12/site-packages/luigi/worker.py", line 138, in _run_get_new_deps
     task_gen = self.task.run()
                ^^^^^^^^^^^^^^^
-  File "/home/ubuntu/CallsForProposals/eu_funding_pipeline_extractScript/tasks/extract.py", line 585, in run
+  File "/home/ubuntu/CallsForProposals/eu_funding_pipeline_extractScript/tasks/extract.py", line 591, in run
     scraper.setup_driver()
-  File "/home/ubuntu/CallsForProposals/eu_funding_pipeline_extractScript/tasks/extract.py", line 42, in setup_driver
-    self.driver = webdriver.Chrome(
-                  ^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/CallsForProposals/eu_funding_pipeline_extractScript/tasks/extract.py", line 51, in setup_driver
+    self.driver = webdriver.Chrome(service=service, options=chrome_options)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   File "/home/ubuntu/CallsForProposals/eu_funding_pipeline_extractScript/tasks/.venv/lib/python3.12/site-packages/selenium/webdriver/chrome/webdriver.py", line 47, in __init__
     super().__init__(
   File "/home/ubuntu/CallsForProposals/eu_funding_pipeline_extractScript/tasks/.venv/lib/python3.12/site-packages/selenium/webdriver/chromium/webdriver.py", line 69, in __init__
@@ -69,30 +61,29 @@ Traceback (most recent call last):
     self.error_handler.check_response(response)
   File "/home/ubuntu/CallsForProposals/eu_funding_pipeline_extractScript/tasks/.venv/lib/python3.12/site-packages/selenium/webdriver/remote/errorhandler.py", line 232, in check_response
     raise exception_class(message, screen, stacktrace)
-selenium.common.exceptions.WebDriverException: Message: unknown error: DevToolsActivePort file doesn't exist
+selenium.common.exceptions.SessionNotCreatedException: Message: session not created
+from unknown error: no chrome binary at /usr/bin/chromium
 Stacktrace:
-#0 0x5c6ba64ab4e3 <unknown>
-#1 0x5c6ba61dac76 <unknown>
-#2 0x5c6ba6207019 <unknown>
-#3 0x5c6ba62032fa <unknown>
-#4 0x5c6ba6200029 <unknown>
-#5 0x5c6ba623eccc <unknown>
-#6 0x5c6ba623e47f <unknown>
-#7 0x5c6ba6235de3 <unknown>
-#8 0x5c6ba620b2dd <unknown>
-#9 0x5c6ba620c34e <unknown>
-#10 0x5c6ba646b3e4 <unknown>
-#11 0x5c6ba646f3d7 <unknown>
-#12 0x5c6ba6479b20 <unknown>
-#13 0x5c6ba6470023 <unknown>
-#14 0x5c6ba643e1aa <unknown>
-#15 0x5c6ba64946b8 <unknown>
-#16 0x5c6ba6494847 <unknown>
-#17 0x5c6ba64a4243 <unknown>
-#18 0x7df2de49caa4 <unknown>
-#19 0x7df2de529c3c <unknown>
+#0 0x59f1c4ea667a <unknown>
+#1 0x59f1c4972cd0 <unknown>
+#2 0x59f1c49a9947 <unknown>
+#3 0x59f1c49a7d58 <unknown>
+#4 0x59f1c49f7464 <unknown>
+#5 0x59f1c49f6b86 <unknown>
+#6 0x59f1c49e89f3 <unknown>
+#7 0x59f1c49b5534 <unknown>
+#8 0x59f1c49b6191 <unknown>
+#9 0x59f1c4e6deef <unknown>
+#10 0x59f1c4e71f98 <unknown>
+#11 0x59f1c4e550f2 <unknown>
+#12 0x59f1c4e7273e <unknown>
+#13 0x59f1c4e3c0be <unknown>
+#14 0x59f1c4e94c68 <unknown>
+#15 0x59f1c4e94e78 <unknown>
+#16 0x59f1c4ea511c <unknown>
+#17 0x7aaa29142ac3 <unknown>
 
-2025-06-25 10:10:12,037 - ERROR - [pid 1412750] Worker Worker(salt=1324710524, workers=1, host=ip-10-0-1-46, username=ubuntu, pid=1412750) failed    FetchFundingOpportunities(max_pages=None, page_size=50, output_file=calls_raw.json)
+2025-06-26 08:12:27,708 - ERROR - [pid 1419407] Worker Worker(salt=9377629313, workers=1, host=ip-10-0-1-46, username=ubuntu, pid=1419407) failed    FetchFundingOpportunities(max_pages=None, page_size=50, output_file=calls_raw.json)
 Traceback (most recent call last):
   File "/home/ubuntu/CallsForProposals/eu_funding_pipeline_extractScript/tasks/.venv/lib/python3.12/site-packages/luigi/worker.py", line 210, in run
     new_deps = self._run_get_new_deps()
@@ -100,11 +91,11 @@ Traceback (most recent call last):
   File "/home/ubuntu/CallsForProposals/eu_funding_pipeline_extractScript/tasks/.venv/lib/python3.12/site-packages/luigi/worker.py", line 138, in _run_get_new_deps
     task_gen = self.task.run()
                ^^^^^^^^^^^^^^^
-  File "/home/ubuntu/CallsForProposals/eu_funding_pipeline_extractScript/tasks/extract.py", line 585, in run
+  File "/home/ubuntu/CallsForProposals/eu_funding_pipeline_extractScript/tasks/extract.py", line 591, in run
     scraper.setup_driver()
-  File "/home/ubuntu/CallsForProposals/eu_funding_pipeline_extractScript/tasks/extract.py", line 42, in setup_driver
-    self.driver = webdriver.Chrome(
-                  ^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/CallsForProposals/eu_funding_pipeline_extractScript/tasks/extract.py", line 51, in setup_driver
+    self.driver = webdriver.Chrome(service=service, options=chrome_options)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   File "/home/ubuntu/CallsForProposals/eu_funding_pipeline_extractScript/tasks/.venv/lib/python3.12/site-packages/selenium/webdriver/chrome/webdriver.py", line 47, in __init__
     super().__init__(
   File "/home/ubuntu/CallsForProposals/eu_funding_pipeline_extractScript/tasks/.venv/lib/python3.12/site-packages/selenium/webdriver/chromium/webdriver.py", line 69, in __init__
@@ -118,47 +109,46 @@ Traceback (most recent call last):
     self.error_handler.check_response(response)
   File "/home/ubuntu/CallsForProposals/eu_funding_pipeline_extractScript/tasks/.venv/lib/python3.12/site-packages/selenium/webdriver/remote/errorhandler.py", line 232, in check_response
     raise exception_class(message, screen, stacktrace)
-selenium.common.exceptions.WebDriverException: Message: unknown error: DevToolsActivePort file doesn't exist
+selenium.common.exceptions.SessionNotCreatedException: Message: session not created
+from unknown error: no chrome binary at /usr/bin/chromium
 Stacktrace:
-#0 0x5c6ba64ab4e3 <unknown>
-#1 0x5c6ba61dac76 <unknown>
-#2 0x5c6ba6207019 <unknown>
-#3 0x5c6ba62032fa <unknown>
-#4 0x5c6ba6200029 <unknown>
-#5 0x5c6ba623eccc <unknown>
-#6 0x5c6ba623e47f <unknown>
-#7 0x5c6ba6235de3 <unknown>
-#8 0x5c6ba620b2dd <unknown>
-#9 0x5c6ba620c34e <unknown>
-#10 0x5c6ba646b3e4 <unknown>
-#11 0x5c6ba646f3d7 <unknown>
-#12 0x5c6ba6479b20 <unknown>
-#13 0x5c6ba6470023 <unknown>
-#14 0x5c6ba643e1aa <unknown>
-#15 0x5c6ba64946b8 <unknown>
-#16 0x5c6ba6494847 <unknown>
-#17 0x5c6ba64a4243 <unknown>
-#18 0x7df2de49caa4 <unknown>
-#19 0x7df2de529c3c <unknown>
+#0 0x59f1c4ea667a <unknown>
+#1 0x59f1c4972cd0 <unknown>
+#2 0x59f1c49a9947 <unknown>
+#3 0x59f1c49a7d58 <unknown>
+#4 0x59f1c49f7464 <unknown>
+#5 0x59f1c49f6b86 <unknown>
+#6 0x59f1c49e89f3 <unknown>
+#7 0x59f1c49b5534 <unknown>
+#8 0x59f1c49b6191 <unknown>
+#9 0x59f1c4e6deef <unknown>
+#10 0x59f1c4e71f98 <unknown>
+#11 0x59f1c4e550f2 <unknown>
+#12 0x59f1c4e7273e <unknown>
+#13 0x59f1c4e3c0be <unknown>
+#14 0x59f1c4e94c68 <unknown>
+#15 0x59f1c4e94e78 <unknown>
+#16 0x59f1c4ea511c <unknown>
+#17 0x7aaa29142ac3 <unknown>
 
 DEBUG: 1 running tasks, waiting for next task to finish
-2025-06-25 10:10:12,041 - DEBUG - 1 running tasks, waiting for next task to finish
+2025-06-26 08:12:27,712 - DEBUG - 1 running tasks, waiting for next task to finish
 INFO: Informed scheduler that task   FetchFundingOpportunities_None_calls_raw_json_50_8fc9b45bdb   has status   FAILED
-2025-06-25 10:10:12,044 - INFO - Informed scheduler that task   FetchFundingOpportunities_None_calls_raw_json_50_8fc9b45bdb   has status   FAILED
+2025-06-26 08:12:27,715 - INFO - Informed scheduler that task   FetchFundingOpportunities_None_calls_raw_json_50_8fc9b45bdb   has status   FAILED
 DEBUG: Asking scheduler for work...
-2025-06-25 10:10:12,044 - DEBUG - Asking scheduler for work...
+2025-06-26 08:12:27,715 - DEBUG - Asking scheduler for work...
 DEBUG: Done
-2025-06-25 10:10:12,044 - DEBUG - Done
+2025-06-26 08:12:27,716 - DEBUG - Done
 DEBUG: There are no more tasks to run at this time
-2025-06-25 10:10:12,044 - DEBUG - There are no more tasks to run at this time
+2025-06-26 08:12:27,716 - DEBUG - There are no more tasks to run at this time
 DEBUG: There are 1 pending tasks possibly being run by other workers
-2025-06-25 10:10:12,044 - DEBUG - There are 1 pending tasks possibly being run by other workers
+2025-06-26 08:12:27,716 - DEBUG - There are 1 pending tasks possibly being run by other workers
 DEBUG: There are 1 pending tasks unique to this worker
-2025-06-25 10:10:12,044 - DEBUG - There are 1 pending tasks unique to this worker
+2025-06-26 08:12:27,716 - DEBUG - There are 1 pending tasks unique to this worker
 DEBUG: There are 1 pending tasks last scheduled by this worker
-2025-06-25 10:10:12,044 - DEBUG - There are 1 pending tasks last scheduled by this worker
-INFO: Worker Worker(salt=1324710524, workers=1, host=ip-10-0-1-46, username=ubuntu, pid=1412750) was stopped. Shutting down Keep-Alive thread
-2025-06-25 10:10:12,044 - INFO - Worker Worker(salt=1324710524, workers=1, host=ip-10-0-1-46, username=ubuntu, pid=1412750) was stopped. Shutting down Keep-Alive thread
+2025-06-26 08:12:27,716 - DEBUG - There are 1 pending tasks last scheduled by this worker
+INFO: Worker Worker(salt=9377629313, workers=1, host=ip-10-0-1-46, username=ubuntu, pid=1419407) was stopped. Shutting down Keep-Alive thread
+2025-06-26 08:12:27,716 - INFO - Worker Worker(salt=9377629313, workers=1, host=ip-10-0-1-46, username=ubuntu, pid=1419407) was stopped. Shutting down Keep-Alive thread
 INFO: 
 ===== Luigi Execution Summary =====
 
@@ -170,7 +160,7 @@ This progress looks :( because there were failed tasks
 
 ===== Luigi Execution Summary =====
 
-2025-06-25 10:10:12,045 - INFO - 
+2025-06-26 08:12:27,717 - INFO - 
 ===== Luigi Execution Summary =====
 
 Scheduled 1 tasks of which:

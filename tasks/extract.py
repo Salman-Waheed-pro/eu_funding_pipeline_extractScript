@@ -30,7 +30,7 @@ class FundingOpportunitiesScraper:
     def setup_driver(self):
         """Initialize Chromium driver with options"""
         chrome_options = Options()
-        chrome_options.binary_location = "/snap/bin/chromium"  # Set Chromium binary location
+        chrome_options.binary_location = "/usr/bin/chromium-browser"  # Chromium binary locaion
     
         if self.headless:
             chrome_options.add_argument("--headless")
