@@ -40,14 +40,46 @@ class EUScraper:
         # Convert list values to single values (parse_qs returns lists)
         return {k: v[0] if isinstance(v, list) and len(v) == 1 else v for k, v in params.items()}
     
+    def validate_url_format(self, url):
+        """Validate that the URL format matches what the website expects"""
+        logger.debug(f"Validating URL format: {url}")
+        
+        # Check if status parameter has unencoded commas
+        if 'status=' in url:
+            status_part = url.split('status=')[1].split('&')[0]
+            if '%2C' in status_part:
+                logger.warning(f"URL contains encoded comma in status parameter: {status_part}")
+                return False
+            elif ',' in status_part:
+                logger.debug(f"Status parameter format looks correct: {status_part}")
+                return True
+        
+        return True
+    
     def _build_paginated_url(self, page_number):
         """Build URL for specific page number while preserving all original filters"""
         params = self.base_params.copy()
         params['pageNumber'] = str(page_number)
         
         parsed = urlparse(self.base_url)
-        query_string = urlencode(params, doseq=True)
+        
+        # Handle URL encoding carefully - don't encode commas in status parameter
+        query_parts = []
+        for key, value in params.items():
+            if key == 'status' and isinstance(value, str) and ',' in value:
+                # Don't URL-encode commas in status parameter
+                query_parts.append(f"{key}={value}")
+            else:
+                # Use normal URL encoding for other parameters
+                encoded_value = urlencode({key: value}).split('=', 1)[1]
+                query_parts.append(f"{key}={encoded_value}")
+        
+        query_string = '&'.join(query_parts)
         new_url = urlunparse((parsed.scheme, parsed.netloc, parsed.path, parsed.params, query_string, parsed.fragment))
+        
+        # Validate the URL format
+        if not self.validate_url_format(new_url):
+            logger.error(f"Generated URL has incorrect format: {new_url}")
         
         logger.debug(f"Built URL for page {page_number}: {new_url}")
         return new_url
@@ -205,6 +237,19 @@ def main():
             
             driver.get(url)
             scraper.wait_for_page_load()
+            
+            # Verify we're on the correct page (check for unexpected redirects)
+            actual_url = driver.current_url
+            if f"pageNumber={page_number}" not in actual_url:
+                logger.warning(f"URL REDIRECT DETECTED!")
+                logger.warning(f"Expected page {page_number}, but current URL is: {actual_url}")
+                
+                # Check if we got redirected to page 1
+                if "pageNumber=1" in actual_url or "pageNumber" not in actual_url:
+                    logger.error(f"Redirected to page 1 - this suggests URL format issue")
+                    logger.error(f"Original URL: {url}")
+                    logger.error(f"Redirected URL: {actual_url}")
+                    break
             
             # Get page info for debugging
             page_info = scraper.get_page_info()
