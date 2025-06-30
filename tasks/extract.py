@@ -77,6 +77,7 @@ class FundingOpportunitiesScraper:
         self.headless = headless
         self.wait_time = wait_time
         self.driver = None
+        self.first_page_processed = False
     
     def setup_driver(self):
         """Initialize Chromium driver with options"""
