@@ -1,0 +1,372 @@
+2025-06-27 09:24:20,239 - INFO - ============================================================
+2025-06-27 09:24:20,239 - INFO - Starting EU Funding Calls Scraper
+2025-06-27 09:24:20,239 - INFO - ============================================================
+2025-06-27 09:24:20,239 - INFO - Initialized scraper with base URL: https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/calls-for-proposals?order=DESC&pageNumber=1&pageSize=50&sortBy=startDate&isExactMatch=true&status=31094501,31094502
+2025-06-27 09:24:20,239 - INFO - Parsed base parameters: {'order': 'DESC', 'pageNumber': '1', 'pageSize': '50', 'sortBy': 'startDate', 'isExactMatch': 'true', 'status': '31094501,31094502'}
+2025-06-27 09:24:20,239 - INFO - Setting up Chrome driver...
+2025-06-27 09:24:20,239 - INFO - Running in headless mode
+2025-06-27 09:24:20,935 - INFO - Chrome driver setup complete
+2025-06-27 09:24:20,935 - INFO - 
+--- ESTABLISHING SESSION ON PAGE 1 ---
+2025-06-27 09:24:20,935 - INFO - 🔗 Starting URL: https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/calls-for-proposals?order=DESC&pageNumber=1&pageSize=50&sortBy=startDate&isExactMatch=true&status=31094501,31094502
+2025-06-27 09:24:22,151 - INFO - 
+--- PROCESSING PAGE 1 ---
+2025-06-27 09:24:22,160 - INFO - Extracting cards from current page...
+2025-06-27 09:24:22,169 - INFO - 🌐 Currently visiting URL: https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/calls-for-proposals?order=DESC&pageNumber=1&pageSize=50&sortBy=startDate&isExactMatch=true&status=31094501,31094502
+2025-06-27 09:24:24,695 - INFO - Found 50 cards on this page
+2025-06-27 09:24:24,761 - INFO - Card 1: Status='Forthcoming', Title='MSCA Choose Europe for Science 2025...'
+2025-06-27 09:24:25,410 - INFO - Card 14: Status='Forthcoming', Title='Innovative approaches for the deployment of Positi...'
+2025-06-27 09:24:25,483 - INFO - Card 15: Status='Forthcoming', Title='Next generation distribution substation for increa...'
+2025-06-27 09:24:25,671 - INFO - Card 19: Status='Forthcoming', Title='De-risking wave energy technology development thro...'
+2025-06-27 09:24:25,760 - INFO - Card 21: Status='Forthcoming', Title='Improved reliability and optimised operations and ...'
+2025-06-27 09:24:26,103 - INFO - Card 27: Status='Forthcoming', Title='New CO2 capture technologies...'
+2025-06-27 09:24:26,263 - INFO - Card 30: Status='Forthcoming', Title='Innovative construction and maintenance, with the ...'
+2025-06-27 09:24:26,630 - INFO - Card 37: Status='Forthcoming', Title='Approaches, verification and training for Edge-AI ...'
+2025-06-27 09:24:26,974 - INFO - Card 43: Status='Forthcoming', Title='NGI Fediversity open call (2025-10F)...'
+2025-06-27 09:24:27,393 - INFO - Page 1 complete. Total cards so far: 50
+2025-06-27 09:24:29,402 - INFO - Navigating from page 1 to page 2
+2025-06-27 09:24:29,402 - INFO - 🔗 Next page URL: https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/calls-for-proposals?order=DESC&pageNumber=2&pageSize=50&sortBy=startDate&isExactMatch=true&status=31094501%2C31094502
+2025-06-27 09:24:30,046 - INFO - 
+--- PROCESSING PAGE 2 ---
+2025-06-27 09:24:30,055 - INFO - Extracting cards from current page...
+2025-06-27 09:24:30,061 - INFO - 🌐 Currently visiting URL: https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/calls-for-proposals?order=DESC&pageNumber=2&pageSize=50&sortBy=startDate&isExactMatch=true&status=31094501%2C31094502
+2025-06-27 09:24:32,148 - INFO - Found 50 cards on this page
+2025-06-27 09:24:32,738 - INFO - Card 9: Status='Forthcoming', Title='Development of innovative solutions strengthening ...'
+2025-06-27 09:24:32,790 - INFO - Card 10: Status='Forthcoming', Title='Safety of Cyclists, Pedestrians and Users of Micro...'
+2025-06-27 09:24:32,940 - INFO - Card 13: Status='Forthcoming', Title='New CO2 capture technologies...'
+2025-06-27 09:24:33,246 - INFO - Card 18: Status='Forthcoming', Title='Reliable data and practices to measure and calcula...'
+2025-06-27 09:24:33,834 - INFO - Card 30: Status='Forthcoming', Title='Innovative pathways for low carbon and climate res...'
+2025-06-27 09:24:34,529 - INFO - Card 42: Status='Forthcoming', Title='TALTECH MERIT Project Mobility Grant...'
+2025-06-27 09:24:34,949 - INFO - Page 2 complete. Total cards so far: 100
+2025-06-27 09:24:34,949 - INFO - 📊 Current status distribution: {'Forthcoming': 100}
+2025-06-27 09:24:36,956 - INFO - Navigating from page 2 to page 3
+2025-06-27 09:24:36,956 - INFO - 🔗 Next page URL: https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/calls-for-proposals?isExactMatch=true&status=31094501%2C31094502&order=DESC&pageNumber=3&pageSize=50&sortBy=startDate
+2025-06-27 09:24:37,270 - INFO - 
+--- PROCESSING PAGE 3 ---
+2025-06-27 09:24:37,275 - INFO - Extracting cards from current page...
+2025-06-27 09:24:37,283 - INFO - 🌐 Currently visiting URL: https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/calls-for-proposals?isExactMatch=true&status=31094501%2C31094502&order=DESC&pageNumber=3&pageSize=50&sortBy=startDate
+2025-06-27 09:24:38,801 - INFO - Found 50 cards on this page
+2025-06-27 09:24:38,847 - INFO - Card 1: Status='Forthcoming', Title='MSCA Choose Europe for Science 2025...'
+2025-06-27 09:24:39,302 - INFO - Card 9: Status='Forthcoming', Title='Icing in the context of sustainable aviation...'
+2025-06-27 09:24:39,724 - INFO - Card 16: Status='Forthcoming', Title='Phase out fossil fuel in energy intensive industri...'
+2025-06-27 09:24:39,781 - INFO - Card 17: Status='Forthcoming', Title='Innovative solutions for a generative AI-powered d...'
+2025-06-27 09:24:40,613 - INFO - Card 30: Status='Forthcoming', Title='Innovative construction and maintenance, with the ...'
+2025-06-27 09:24:40,668 - INFO - Card 31: Status='Forthcoming', Title='Accelerating freight transport and logistics digit...'
+2025-06-27 09:24:41,109 - INFO - Card 39: Status='Forthcoming', Title='European network of national competence centers fo...'
+2025-06-27 09:24:41,628 - INFO - Card 49: Status='Forthcoming', Title='Biotech for Climate Resilient Crops and Plant-Base...'
+2025-06-27 09:24:41,692 - INFO - Page 3 complete. Total cards so far: 150
+2025-06-27 09:24:41,692 - INFO - 📊 Current status distribution: {'Forthcoming': 150}
+2025-06-27 09:24:43,699 - INFO - Navigating from page 3 to page 4
+2025-06-27 09:24:43,699 - INFO - 🔗 Next page URL: https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/calls-for-proposals?isExactMatch=true&status=31094501%2C31094502&order=DESC&pageNumber=4&pageSize=50&sortBy=startDate
+2025-06-27 09:24:43,912 - INFO - 
+--- PROCESSING PAGE 4 ---
+2025-06-27 09:24:43,925 - INFO - Extracting cards from current page...
+2025-06-27 09:24:43,931 - INFO - 🌐 Currently visiting URL: https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/calls-for-proposals?isExactMatch=true&status=31094501%2C31094502&order=DESC&pageNumber=4&pageSize=50&sortBy=startDate
+2025-06-27 09:24:45,449 - INFO - Found 50 cards on this page
+2025-06-27 09:24:45,851 - INFO - Card 8: Status='Forthcoming', Title='De-risking wave energy technology development thro...'
+2025-06-27 09:24:45,895 - INFO - Card 9: Status='Forthcoming', Title='Development of innovative solutions strengthening ...'
+2025-06-27 09:24:45,939 - INFO - Card 10: Status='Forthcoming', Title='Safety of Cyclists, Pedestrians and Users of Micro...'
+2025-06-27 09:24:46,142 - INFO - Card 14: Status='Forthcoming', Title='Understand and minimise the environmental impacts ...'
+2025-06-27 09:24:46,690 - INFO - Card 24: Status='Forthcoming', Title='Next-generation environment perception for real wo...'
+2025-06-27 09:24:46,793 - INFO - Card 26: Status='Forthcoming', Title='Next generation distribution substation for increa...'
+2025-06-27 09:24:46,952 - INFO - Card 29: Status='Forthcoming', Title='Optimal combination of low embodied carbon constru...'
+2025-06-27 09:24:47,200 - INFO - Card 34: Status='Forthcoming', Title='Integrating inland waterway transport in smart shi...'
+2025-06-27 09:24:47,751 - INFO - Card 45: Status='Forthcoming', Title='NGI TALER open call (2025-10T)...'
+2025-06-27 09:24:47,919 - INFO - Card 48: Status='Forthcoming', Title='Waste-to-value devices - circular production of re...'
+2025-06-27 09:24:48,037 - INFO - Page 4 complete. Total cards so far: 200
+2025-06-27 09:24:50,045 - INFO - Navigating from page 4 to page 5
+2025-06-27 09:24:50,045 - INFO - 🔗 Next page URL: https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/calls-for-proposals?isExactMatch=true&status=31094501%2C31094502&order=DESC&pageNumber=5&pageSize=50&sortBy=startDate
+2025-06-27 09:24:50,278 - INFO - 
+--- PROCESSING PAGE 5 ---
+2025-06-27 09:24:50,286 - INFO - Extracting cards from current page...
+2025-06-27 09:24:50,294 - INFO - 🌐 Currently visiting URL: https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/calls-for-proposals?isExactMatch=true&status=31094501%2C31094502&order=DESC&pageNumber=5&pageSize=50&sortBy=startDate
+2025-06-27 09:24:51,909 - INFO - Found 50 cards on this page
+2025-06-27 09:24:52,010 - INFO - Card 2: Status='Forthcoming', Title='Development of sustainable and design-to-cost batt...'
+2025-06-27 09:24:52,109 - INFO - Card 4: Status='Forthcoming', Title='Safety of Cyclists, Pedestrians and Users of Micro...'
+2025-06-27 09:24:52,237 - INFO - Card 6: Status='Forthcoming', Title='Federated CCAM data exchange platform (CCAM Partne...'
+2025-06-27 09:24:52,283 - INFO - Card 7: Status='Forthcoming', Title='Integration of human driving behaviour in the vali...'
+2025-06-27 09:24:52,335 - INFO - Card 8: Status='Forthcoming', Title='Real time monitoring of regulated and non-regulate...'
+2025-06-27 09:24:52,516 - INFO - Card 11: Status='Forthcoming', Title='Large-scale production of liquid advanced biofuels...'
+2025-06-27 09:24:52,572 - INFO - Card 12: Status='Forthcoming', Title='Competitiveness, energy security and integration a...'
+2025-06-27 09:24:53,298 - INFO - Card 23: Status='Forthcoming', Title='Development of innovative solutions strengthening ...'
+2025-06-27 09:24:53,455 - INFO - Card 26: Status='Forthcoming', Title='Smarter buildings as part of the energy system for...'
+2025-06-27 09:24:53,500 - INFO - Card 27: Status='Forthcoming', Title='New CO2 capture technologies...'
+2025-06-27 09:24:54,010 - INFO - Card 37: Status='Forthcoming', Title='Approaches, verification and training for Edge-AI ...'
+2025-06-27 09:24:54,212 - INFO - Card 41: Status='Forthcoming', Title='TALTECH MERIT Project Mobility Grant...'
+2025-06-27 09:24:54,264 - INFO - Card 42: Status='Forthcoming', Title='TALTECH MERIT Project Excellence Scholarship Award...'
+2025-06-27 09:24:54,317 - INFO - Card 43: Status='Forthcoming', Title='NGI Fediversity open call (2025-10F)...'
+2025-06-27 09:24:54,724 - INFO - Page 5 complete. Total cards so far: 250
+2025-06-27 09:24:56,731 - INFO - Navigating from page 5 to page 6
+2025-06-27 09:24:56,731 - INFO - 🔗 Next page URL: https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/calls-for-proposals?isExactMatch=true&status=31094501%2C31094502&order=DESC&pageNumber=6&pageSize=50&sortBy=startDate
+2025-06-27 09:24:57,015 - INFO - 
+--- PROCESSING PAGE 6 ---
+2025-06-27 09:24:57,022 - INFO - Extracting cards from current page...
+2025-06-27 09:24:57,031 - INFO - 🌐 Currently visiting URL: https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/calls-for-proposals?isExactMatch=true&status=31094501%2C31094502&order=DESC&pageNumber=6&pageSize=50&sortBy=startDate
+2025-06-27 09:24:58,689 - INFO - Found 50 cards on this page
+2025-06-27 09:24:58,906 - INFO - Card 4: Status='Forthcoming', Title='Safety of Cyclists, Pedestrians and Users of Micro...'
+2025-06-27 09:24:59,296 - INFO - Card 10: Status='Forthcoming', Title='Towards commercialisation of Perovskite PV and dev...'
+2025-06-27 09:24:59,699 - INFO - Card 17: Status='Forthcoming', Title='Innovative solutions for a generative AI-powered d...'
+2025-06-27 09:24:59,800 - INFO - Card 19: Status='Forthcoming', Title='De-risking wave energy technology development thro...'
+2025-06-27 09:25:00,260 - INFO - Card 25: Status='Forthcoming', Title='Underground Thermal Energy Storage in dense urban ...'
+2025-06-27 09:25:00,542 - INFO - Card 29: Status='Forthcoming', Title='Understand and minimise the environmental impacts ...'
+2025-06-27 09:25:00,686 - INFO - Card 31: Status='Forthcoming', Title='Accelerating freight transport and logistics digit...'
+2025-06-27 09:25:00,935 - INFO - Card 35: Status='Forthcoming', Title='On-site innovative robotic and automated solutions...'
+2025-06-27 09:25:01,283 - INFO - Card 39: Status='Forthcoming', Title='European network of national competence centers fo...'
+2025-06-27 09:25:02,104 - INFO - Card 50: Status='Forthcoming', Title='Maturing of a European industrial ecosystem for se...'
+2025-06-27 09:25:02,124 - INFO - Page 6 complete. Total cards so far: 300
+2025-06-27 09:25:02,124 - INFO - 📊 Current status distribution: {'Forthcoming': 300}
+2025-06-27 09:25:04,131 - INFO - Navigating from page 6 to page 7
+2025-06-27 09:25:04,131 - INFO - 🔗 Next page URL: https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/calls-for-proposals?isExactMatch=true&status=31094501%2C31094502&order=DESC&pageNumber=7&pageSize=50&sortBy=startDate
+2025-06-27 09:25:04,362 - INFO - 
+--- PROCESSING PAGE 7 ---
+2025-06-27 09:25:04,373 - INFO - Extracting cards from current page...
+2025-06-27 09:25:04,379 - INFO - 🌐 Currently visiting URL: https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/calls-for-proposals?isExactMatch=true&status=31094501%2C31094502&order=DESC&pageNumber=7&pageSize=50&sortBy=startDate
+2025-06-27 09:25:05,979 - INFO - Found 50 cards on this page
+2025-06-27 09:25:06,420 - INFO - Card 7: Status='Forthcoming', Title='Integrating advanced materials, cell design and ma...'
+2025-06-27 09:25:06,732 - INFO - Card 12: Status='Forthcoming', Title='Smarter buildings as part of the energy system for...'
+2025-06-27 09:25:06,800 - INFO - Card 13: Status='Forthcoming', Title='New CO2 capture technologies...'
+2025-06-27 09:25:06,916 - INFO - Card 15: Status='Forthcoming', Title='Innovative construction and maintenance, with the ...'
+2025-06-27 09:25:06,973 - INFO - Card 16: Status='Forthcoming', Title='Accelerating freight transport and logistics digit...'
+2025-06-27 09:25:07,417 - INFO - Card 23: Status='Forthcoming', Title='Federated CCAM data exchange platform (CCAM Partne...'
+2025-06-27 09:25:07,809 - INFO - Card 30: Status='Forthcoming', Title='Innovative pathways for low carbon and climate res...'
+2025-06-27 09:25:08,194 - INFO - Card 37: Status='Forthcoming', Title='Monitoring and Evaluation of the Societal Readines...'
+2025-06-27 09:25:08,456 - INFO - Card 42: Status='Forthcoming', Title='TALTECH MERIT Project Mobility Grant...'
+2025-06-27 09:25:08,783 - INFO - Card 48: Status='Forthcoming', Title='Waste-to-value devices - circular production of re...'
+2025-06-27 09:25:08,907 - INFO - Page 7 complete. Total cards so far: 350
+2025-06-27 09:25:10,914 - INFO - Navigating from page 7 to page 8
+2025-06-27 09:25:10,914 - INFO - 🔗 Next page URL: https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/calls-for-proposals?isExactMatch=true&status=31094501%2C31094502&order=DESC&pageNumber=8&pageSize=50&sortBy=startDate
+2025-06-27 09:25:11,136 - INFO - 
+--- PROCESSING PAGE 8 ---
+2025-06-27 09:25:11,161 - INFO - Extracting cards from current page...
+2025-06-27 09:25:11,169 - INFO - 🌐 Currently visiting URL: https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/calls-for-proposals?isExactMatch=true&status=31094501%2C31094502&order=DESC&pageNumber=8&pageSize=50&sortBy=startDate
+2025-06-27 09:25:13,016 - INFO - Found 50 cards on this page
+2025-06-27 09:25:13,535 - INFO - Card 9: Status='Forthcoming', Title='Icing in the context of sustainable aviation...'
+2025-06-27 09:25:13,656 - INFO - Card 11: Status='Forthcoming', Title='Large-scale production of liquid advanced biofuels...'
+2025-06-27 09:25:13,767 - INFO - Card 13: Status='Forthcoming', Title='Innovative pathways for low carbon and climate res...'
+2025-06-27 09:25:14,478 - INFO - Card 24: Status='Forthcoming', Title='Innovative tools and services to manage and empowe...'
+2025-06-27 09:25:14,703 - INFO - Card 28: Status='Forthcoming', Title='Accelerated multi-physical and virtual testing for...'
+2025-06-27 09:25:14,808 - INFO - Card 30: Status='Forthcoming', Title='Innovative construction and maintenance, with the ...'
+2025-06-27 09:25:15,161 - INFO - Card 36: Status='Forthcoming', Title='Integrating inland waterway transport in smart shi...'
+2025-06-27 09:25:15,767 - INFO - Card 46: Status='Forthcoming', Title='Generative-AI based Agents to Revolutionize Medica...'
+2025-06-27 09:25:16,020 - INFO - Page 8 complete. Total cards so far: 400
+2025-06-27 09:25:18,028 - INFO - Navigating from page 8 to page 9
+2025-06-27 09:25:18,028 - INFO - 🔗 Next page URL: https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/calls-for-proposals?isExactMatch=true&status=31094501%2C31094502&order=DESC&pageNumber=9&pageSize=50&sortBy=startDate
+2025-06-27 09:25:18,242 - INFO - 
+--- PROCESSING PAGE 9 ---
+2025-06-27 09:25:18,251 - INFO - Extracting cards from current page...
+2025-06-27 09:25:18,266 - INFO - 🌐 Currently visiting URL: https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/calls-for-proposals?isExactMatch=true&status=31094501%2C31094502&order=DESC&pageNumber=9&pageSize=50&sortBy=startDate
+2025-06-27 09:25:20,207 - INFO - Found 50 cards on this page
+2025-06-27 09:25:20,530 - INFO - Card 4: Status='Forthcoming', Title='Towards commercialisation of Perovskite PV and dev...'
+2025-06-27 09:25:20,655 - INFO - Card 6: Status='Forthcoming', Title='Improved reliability and optimised operations and ...'
+2025-06-27 09:25:20,724 - INFO - Card 7: Status='Forthcoming', Title='Integrating advanced materials, cell design and ma...'
+2025-06-27 09:25:20,912 - INFO - Card 10: Status='Forthcoming', Title='Safety of Cyclists, Pedestrians and Users of Micro...'
+2025-06-27 09:25:21,037 - INFO - Card 12: Status='Forthcoming', Title='Smarter buildings as part of the energy system for...'
+2025-06-27 09:25:21,353 - INFO - Card 17: Status='Forthcoming', Title='Predicting and avoiding road crashes based on Arti...'
+2025-06-27 09:25:21,731 - INFO - Card 23: Status='Forthcoming', Title='Federated CCAM data exchange platform (CCAM Partne...'
+2025-06-27 09:25:21,858 - INFO - Card 25: Status='Forthcoming', Title='Integration of human driving behaviour in the vali...'
+2025-06-27 09:25:21,973 - INFO - Card 27: Status='Forthcoming', Title='Phase out fossil fuel in energy intensive industri...'
+2025-06-27 09:25:22,078 - INFO - Card 29: Status='Forthcoming', Title='Optimal combination of low embodied carbon constru...'
+2025-06-27 09:25:22,189 - INFO - Card 31: Status='Forthcoming', Title='Innovative approaches for the deployment of Positi...'
+2025-06-27 09:25:22,475 - INFO - Card 36: Status='Forthcoming', Title='Development of sustainable and design-to-cost batt...'
+2025-06-27 09:25:22,860 - INFO - Card 43: Status='Forthcoming', Title='NGI Fediversity open call (2025-10F)...'
+2025-06-27 09:25:23,009 - INFO - Card 46: Status='Forthcoming', Title='Towards autonomous robot collectives delivering co...'
+2025-06-27 09:25:23,057 - INFO - Card 47: Status='Forthcoming', Title='Generative-AI based Agents to Revolutionize Medica...'
+2025-06-27 09:25:23,106 - INFO - Card 48: Status='Forthcoming', Title='Waste-to-value devices - circular production of re...'
+2025-06-27 09:25:23,214 - INFO - Page 9 complete. Total cards so far: 450
+2025-06-27 09:25:23,215 - INFO - 📊 Current status distribution: {'Forthcoming': 450}
+2025-06-27 09:25:25,222 - INFO - Navigating from page 9 to page 10
+2025-06-27 09:25:25,222 - INFO - 🔗 Next page URL: https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/calls-for-proposals?isExactMatch=true&status=31094501%2C31094502&order=DESC&pageNumber=10&pageSize=50&sortBy=startDate
+2025-06-27 09:25:25,459 - INFO - 
+--- PROCESSING PAGE 10 ---
+2025-06-27 09:25:25,471 - INFO - Extracting cards from current page...
+2025-06-27 09:25:25,477 - INFO - 🌐 Currently visiting URL: https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/calls-for-proposals?isExactMatch=true&status=31094501%2C31094502&order=DESC&pageNumber=10&pageSize=50&sortBy=startDate
+2025-06-27 09:25:27,302 - INFO - Found 50 cards on this page
+2025-06-27 09:25:27,867 - INFO - Card 8: Status='Forthcoming', Title='De-risking wave energy technology development thro...'
+2025-06-27 09:25:28,278 - INFO - Card 15: Status='Forthcoming', Title='Innovative construction and maintenance, with the ...'
+2025-06-27 09:25:28,640 - INFO - Card 21: Status='Forthcoming', Title='Underground Thermal Energy Storage in dense urban ...'
+2025-06-27 09:25:28,806 - INFO - Card 24: Status='Forthcoming', Title='Next-generation environment perception for real wo...'
+2025-06-27 09:25:29,053 - INFO - Card 28: Status='Forthcoming', Title='Innovative solutions for a generative AI-powered d...'
+2025-06-27 09:25:29,250 - INFO - Card 31: Status='Forthcoming', Title='Innovative approaches for the deployment of Positi...'
+2025-06-27 09:25:29,519 - INFO - Card 35: Status='Forthcoming', Title='Approaches, verification and training for Edge-AI ...'
+2025-06-27 09:25:29,595 - INFO - Card 36: Status='Forthcoming', Title='Development of sustainable and design-to-cost batt...'
+2025-06-27 09:25:29,736 - INFO - Card 38: Status='Forthcoming', Title='Scaling up deep tech ecosystems...'
+2025-06-27 09:25:29,955 - INFO - Card 42: Status='Forthcoming', Title='TALTECH MERIT Project Mobility Grant...'
+2025-06-27 09:25:30,025 - INFO - Card 43: Status='Forthcoming', Title='NGI Fediversity open call (2025-10F)...'
+2025-06-27 09:25:30,261 - INFO - Card 46: Status='Forthcoming', Title='Towards autonomous robot collectives delivering co...'
+2025-06-27 09:25:30,546 - INFO - Page 10 complete. Total cards so far: 500
+2025-06-27 09:25:30,547 - INFO - 📊 Current status distribution: {'Forthcoming': 500}
+2025-06-27 09:25:32,556 - INFO - Navigating from page 10 to page 11
+2025-06-27 09:25:32,556 - INFO - 🔗 Next page URL: https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/calls-for-proposals?isExactMatch=true&status=31094501%2C31094502&order=DESC&pageNumber=11&pageSize=50&sortBy=startDate
+2025-06-27 09:25:32,812 - INFO - 
+--- PROCESSING PAGE 11 ---
+2025-06-27 09:25:32,837 - INFO - Extracting cards from current page...
+2025-06-27 09:25:32,847 - INFO - 🌐 Currently visiting URL: https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/calls-for-proposals?isExactMatch=true&status=31094501%2C31094502&order=DESC&pageNumber=11&pageSize=50&sortBy=startDate
+2025-06-27 09:25:34,801 - INFO - Found 50 cards on this page
+2025-06-27 09:25:35,074 - INFO - Card 4: Status='Forthcoming', Title='Towards commercialisation of Perovskite PV and dev...'
+2025-06-27 09:25:35,157 - INFO - Card 5: Status='Forthcoming', Title='Demonstration of thermal energy storage solutions ...'
+2025-06-27 09:25:35,220 - INFO - Card 6: Status='Forthcoming', Title='Improved reliability and optimised operations and ...'
+2025-06-27 09:25:35,411 - INFO - Card 9: Status='Forthcoming', Title='Development of innovative solutions strengthening ...'
+2025-06-27 09:25:35,705 - INFO - Card 14: Status='Forthcoming', Title='Understand and minimise the environmental impacts ...'
+2025-06-27 09:25:36,039 - INFO - Card 19: Status='Forthcoming', Title='Real time monitoring of regulated and non-regulate...'
+2025-06-27 09:25:36,096 - INFO - Card 20: Status='Forthcoming', Title='Icing in the context of sustainable aviation...'
+2025-06-27 09:25:37,013 - INFO - Card 35: Status='Forthcoming', Title='Approaches, verification and training for Edge-AI ...'
+2025-06-27 09:25:37,950 - INFO - Card 49: Status='Forthcoming', Title='Biotech for Climate Resilient Crops and Plant-Base...'
+2025-06-27 09:25:38,023 - INFO - Page 11 complete. Total cards so far: 550
+2025-06-27 09:25:40,032 - INFO - Navigating from page 11 to page 12
+2025-06-27 09:25:40,033 - INFO - 🔗 Next page URL: https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/calls-for-proposals?isExactMatch=true&status=31094501%2C31094502&order=DESC&pageNumber=12&pageSize=50&sortBy=startDate
+2025-06-27 09:25:40,400 - INFO - 
+--- PROCESSING PAGE 12 ---
+2025-06-27 09:25:40,416 - INFO - Extracting cards from current page...
+2025-06-27 09:25:40,995 - INFO - 🌐 Currently visiting URL: https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/calls-for-proposals?isExactMatch=true&status=31094501,31094502&order=DESC&pageNumber=12&pageSize=50&sortBy=startDate
+2025-06-27 09:25:42,210 - INFO - Found 50 cards on this page
+2025-06-27 09:25:42,576 - INFO - Card 5: Status='Forthcoming', Title='Next-generation environment perception for real wo...'
+2025-06-27 09:25:42,667 - INFO - Card 6: Status='Forthcoming', Title='Federated CCAM data exchange platform (CCAM Partne...'
+2025-06-27 09:25:42,994 - INFO - Card 11: Status='Forthcoming', Title='Large-scale production of liquid advanced biofuels...'
+2025-06-27 09:25:43,203 - INFO - Card 14: Status='Forthcoming', Title='Innovative approaches for the deployment of Positi...'
+2025-06-27 09:25:44,220 - INFO - Card 30: Status='Forthcoming', Title='Innovative construction and maintenance, with the ...'
+2025-06-27 09:25:44,509 - INFO - Card 34: Status='Forthcoming', Title='Extending the lifetime of crystalline silicon PV m...'
+2025-06-27 09:25:44,721 - INFO - Card 37: Status='Forthcoming', Title='Approaches, verification and training for Edge-AI ...'
+2025-06-27 09:25:45,209 - INFO - Card 45: Status='Forthcoming', Title='NGI TALER open call (2025-10T)...'
+2025-06-27 09:25:45,467 - INFO - Card 49: Status='Forthcoming', Title='Biotech for Climate Resilient Crops and Plant-Base...'
+2025-06-27 09:25:45,523 - INFO - Card 50: Status='Forthcoming', Title='Maturing of a European industrial ecosystem for se...'
+2025-06-27 09:25:45,539 - INFO - Page 12 complete. Total cards so far: 600
+2025-06-27 09:25:47,546 - INFO - Navigating from page 12 to page 13
+2025-06-27 09:25:47,546 - INFO - 🔗 Next page URL: https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/calls-for-proposals?isExactMatch=true&status=31094501%2C31094502&order=DESC&pageNumber=13&pageSize=50&sortBy=startDate
+2025-06-27 09:25:47,824 - INFO - 
+--- PROCESSING PAGE 13 ---
+2025-06-27 09:25:47,830 - INFO - Extracting cards from current page...
+2025-06-27 09:25:47,837 - INFO - 🌐 Currently visiting URL: https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/calls-for-proposals?isExactMatch=true&status=31094501%2C31094502&order=DESC&pageNumber=13&pageSize=50&sortBy=startDate
+2025-06-27 09:25:49,512 - INFO - Found 50 cards on this page
+2025-06-27 09:25:50,034 - INFO - Card 7: Status='Forthcoming', Title='Integrating advanced materials, cell design and ma...'
+2025-06-27 09:25:50,258 - INFO - Card 10: Status='Forthcoming', Title='Safety of Cyclists, Pedestrians and Users of Micro...'
+2025-06-27 09:25:50,327 - INFO - Card 11: Status='Forthcoming', Title='Accelerated multi-physical and virtual testing for...'
+2025-06-27 09:25:50,629 - INFO - Card 15: Status='Forthcoming', Title='Innovative construction and maintenance, with the ...'
+2025-06-27 09:25:50,766 - INFO - Card 17: Status='Forthcoming', Title='Predicting and avoiding road crashes based on Arti...'
+2025-06-27 09:25:50,973 - INFO - Card 20: Status='Forthcoming', Title='Icing in the context of sustainable aviation...'
+2025-06-27 09:25:51,474 - INFO - Card 29: Status='Forthcoming', Title='Optimal combination of low embodied carbon constru...'
+2025-06-27 09:25:51,522 - INFO - Card 30: Status='Forthcoming', Title='Innovative pathways for low carbon and climate res...'
+2025-06-27 09:25:51,673 - INFO - Card 33: Status='Forthcoming', Title='On-site innovative robotic and automated solutions...'
+2025-06-27 09:25:51,848 - INFO - Card 36: Status='Forthcoming', Title='Development of sustainable and design-to-cost batt...'
+2025-06-27 09:25:51,955 - INFO - Card 38: Status='Forthcoming', Title='Scaling up deep tech ecosystems...'
+2025-06-27 09:25:52,605 - INFO - Card 50: Status='Forthcoming', Title='Maturing of a European industrial ecosystem for se...'
+2025-06-27 09:25:52,620 - INFO - Page 13 complete. Total cards so far: 650
+2025-06-27 09:25:54,628 - INFO - Navigating from page 13 to page 14
+2025-06-27 09:25:54,628 - INFO - 🔗 Next page URL: https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/calls-for-proposals?isExactMatch=true&status=31094501%2C31094502&order=DESC&pageNumber=14&pageSize=50&sortBy=startDate
+2025-06-27 09:25:55,058 - INFO - 
+--- PROCESSING PAGE 14 ---
+2025-06-27 09:25:55,086 - INFO - Extracting cards from current page...
+2025-06-27 09:25:55,620 - INFO - 🌐 Currently visiting URL: https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/calls-for-proposals?isExactMatch=true&status=31094501,31094502&order=DESC&pageNumber=14&pageSize=50&sortBy=startDate
+2025-06-27 09:25:57,106 - INFO - Found 50 cards on this page
+2025-06-27 09:25:57,426 - INFO - Card 4: Status='Forthcoming', Title='Towards commercialisation of Perovskite PV and dev...'
+2025-06-27 09:25:57,490 - INFO - Card 5: Status='Forthcoming', Title='Demonstration of thermal energy storage solutions ...'
+2025-06-27 09:25:57,604 - INFO - Card 6: Status='Forthcoming', Title='Improved reliability and optimised operations and ...'
+2025-06-27 09:25:57,674 - INFO - Card 7: Status='Forthcoming', Title='Integrating advanced materials, cell design and ma...'
+2025-06-27 09:25:57,892 - INFO - Card 10: Status='Forthcoming', Title='Safety of Cyclists, Pedestrians and Users of Micro...'
+2025-06-27 09:25:57,964 - INFO - Card 11: Status='Forthcoming', Title='Accelerated multi-physical and virtual testing for...'
+2025-06-27 09:25:58,619 - INFO - Card 21: Status='Forthcoming', Title='Underground Thermal Energy Storage in dense urban ...'
+2025-06-27 09:25:58,671 - INFO - Card 22: Status='Forthcoming', Title='Innovative tools and services to manage and empowe...'
+2025-06-27 09:25:58,732 - INFO - Card 23: Status='Forthcoming', Title='Federated CCAM data exchange platform (CCAM Partne...'
+2025-06-27 09:25:58,801 - INFO - Card 24: Status='Forthcoming', Title='Next-generation environment perception for real wo...'
+2025-06-27 09:25:59,303 - INFO - Card 33: Status='Forthcoming', Title='On-site innovative robotic and automated solutions...'
+2025-06-27 09:25:59,534 - INFO - Card 36: Status='Forthcoming', Title='Development of sustainable and design-to-cost batt...'
+2025-06-27 09:25:59,686 - INFO - Card 38: Status='Forthcoming', Title='Scaling up deep tech ecosystems...'
+2025-06-27 09:26:00,184 - INFO - Card 45: Status='Forthcoming', Title='NGI TALER open call (2025-10T)...'
+2025-06-27 09:26:00,620 - INFO - Page 14 complete. Total cards so far: 700
+2025-06-27 09:26:00,620 - INFO - 📊 Current status distribution: {'Forthcoming': 700}
+2025-06-27 09:26:02,629 - INFO - Navigating from page 14 to page 15
+2025-06-27 09:26:02,629 - INFO - 🔗 Next page URL: https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/calls-for-proposals?isExactMatch=true&status=31094501%2C31094502&order=DESC&pageNumber=15&pageSize=50&sortBy=startDate
+2025-06-27 09:26:02,986 - INFO - 
+--- PROCESSING PAGE 15 ---
+2025-06-27 09:26:02,997 - INFO - Extracting cards from current page...
+2025-06-27 09:26:03,413 - INFO - 🌐 Currently visiting URL: https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/calls-for-proposals?isExactMatch=true&status=31094501,31094502&order=DESC&pageNumber=15&pageSize=50&sortBy=startDate
+2025-06-27 09:26:04,804 - INFO - Found 50 cards on this page
+2025-06-27 09:26:05,658 - INFO - Card 10: Status='Forthcoming', Title='Safety of Cyclists, Pedestrians and Users of Micro...'
+2025-06-27 09:26:05,724 - INFO - Card 11: Status='Forthcoming', Title='Accelerated multi-physical and virtual testing for...'
+2025-06-27 09:26:06,084 - INFO - Card 16: Status='Forthcoming', Title='Accelerating freight transport and logistics digit...'
+2025-06-27 09:26:06,703 - INFO - Card 26: Status='Forthcoming', Title='Next generation distribution substation for increa...'
+2025-06-27 09:26:06,756 - INFO - Card 27: Status='Forthcoming', Title='Phase out fossil fuel in energy intensive industri...'
+2025-06-27 09:26:07,020 - INFO - Card 32: Status='Forthcoming', Title='Extending the lifetime of crystalline silicon PV m...'
+2025-06-27 09:26:07,179 - INFO - Card 35: Status='Forthcoming', Title='Approaches, verification and training for Edge-AI ...'
+2025-06-27 09:26:07,393 - INFO - Card 39: Status='Forthcoming', Title='European network of national competence centers fo...'
+2025-06-27 09:26:07,693 - INFO - Card 45: Status='Forthcoming', Title='NGI TALER open call (2025-10T)...'
+2025-06-27 09:26:07,980 - INFO - Page 15 complete. Total cards so far: 750
+2025-06-27 09:26:09,987 - INFO - Navigating from page 15 to page 16
+2025-06-27 09:26:09,987 - INFO - 🔗 Next page URL: https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/calls-for-proposals?isExactMatch=true&status=31094501%2C31094502&order=DESC&pageNumber=16&pageSize=50&sortBy=startDate
+2025-06-27 09:26:10,352 - INFO - 
+--- PROCESSING PAGE 16 ---
+2025-06-27 09:26:10,365 - INFO - Extracting cards from current page...
+2025-06-27 09:26:10,423 - INFO - 🌐 Currently visiting URL: https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/calls-for-proposals?isExactMatch=true&status=31094501%2C31094502&order=DESC&pageNumber=16&pageSize=50&sortBy=startDate
+2025-06-27 09:26:12,237 - INFO - Found 50 cards on this page
+2025-06-27 09:26:12,600 - INFO - Card 6: Status='Forthcoming', Title='Federated CCAM data exchange platform (CCAM Partne...'
+2025-06-27 09:26:12,958 - INFO - Card 12: Status='Forthcoming', Title='Competitiveness, energy security and integration a...'
+2025-06-27 09:26:13,688 - INFO - Card 24: Status='Forthcoming', Title='Innovative tools and services to manage and empowe...'
+2025-06-27 09:26:13,741 - INFO - Card 25: Status='Forthcoming', Title='Underground Thermal Energy Storage in dense urban ...'
+2025-06-27 09:26:13,963 - INFO - Card 29: Status='Forthcoming', Title='Understand and minimise the environmental impacts ...'
+2025-06-27 09:26:14,022 - INFO - Card 30: Status='Forthcoming', Title='Innovative construction and maintenance, with the ...'
+2025-06-27 09:26:14,254 - INFO - Card 34: Status='Forthcoming', Title='Extending the lifetime of crystalline silicon PV m...'
+2025-06-27 09:26:14,493 - INFO - Card 38: Status='Forthcoming', Title='Expanding Investment Ecosystems...'
+2025-06-27 09:26:14,668 - INFO - Card 41: Status='Forthcoming', Title='TALTECH MERIT Project Mobility Grant...'
+2025-06-27 09:26:14,780 - INFO - Card 43: Status='Forthcoming', Title='NGI Fediversity open call (2025-10F)...'
+2025-06-27 09:26:15,255 - INFO - Page 16 complete. Total cards so far: 800
+2025-06-27 09:26:15,255 - INFO - Approaching expected limit (804 calls), currently at 800 - checking if we should continue
+2025-06-27 09:26:17,263 - INFO - Navigating from page 16 to page 17
+2025-06-27 09:26:17,263 - INFO - 🔗 Next page URL: https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/calls-for-proposals?isExactMatch=true&status=31094501%2C31094502&order=DESC&pageNumber=17&pageSize=50&sortBy=startDate
+2025-06-27 09:26:17,597 - INFO - 
+--- PROCESSING PAGE 17 ---
+2025-06-27 09:26:17,615 - INFO - Extracting cards from current page...
+2025-06-27 09:26:17,637 - INFO - 🌐 Currently visiting URL: https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/calls-for-proposals?isExactMatch=true&status=31094501%2C31094502&order=DESC&pageNumber=17&pageSize=50&sortBy=startDate
+2025-06-27 09:26:19,115 - INFO - Found 50 cards on this page
+2025-06-27 09:26:19,597 - INFO - Card 8: Status='Forthcoming', Title='De-risking wave energy technology development thro...'
+2025-06-27 09:26:19,700 - INFO - Card 10: Status='Forthcoming', Title='Safety of Cyclists, Pedestrians and Users of Micro...'
+2025-06-27 09:26:19,812 - INFO - Card 12: Status='Forthcoming', Title='Smarter buildings as part of the energy system for...'
+2025-06-27 09:26:20,280 - INFO - Card 20: Status='Forthcoming', Title='Icing in the context of sustainable aviation...'
+2025-06-27 09:26:20,333 - INFO - Card 21: Status='Forthcoming', Title='Underground Thermal Energy Storage in dense urban ...'
+2025-06-27 09:26:20,716 - INFO - Card 27: Status='Forthcoming', Title='Phase out fossil fuel in energy intensive industri...'
+2025-06-27 09:26:20,928 - INFO - Card 31: Status='Forthcoming', Title='Innovative approaches for the deployment of Positi...'
+2025-06-27 09:26:21,157 - INFO - Card 35: Status='Forthcoming', Title='Approaches, verification and training for Edge-AI ...'
+2025-06-27 09:26:21,384 - INFO - Card 39: Status='Forthcoming', Title='European network of national competence centers fo...'
+2025-06-27 09:26:21,533 - INFO - Card 42: Status='Forthcoming', Title='TALTECH MERIT Project Mobility Grant...'
+2025-06-27 09:26:21,582 - INFO - Card 43: Status='Forthcoming', Title='NGI Fediversity open call (2025-10F)...'
+2025-06-27 09:26:21,639 - INFO - Card 44: Status='Forthcoming', Title='NGI Zero Commons Fund (2025-10Z)...'
+2025-06-27 09:26:21,993 - INFO - Page 17 complete. Total cards so far: 850
+2025-06-27 09:26:21,993 - INFO - 📊 Current status distribution: {'Forthcoming': 850}
+2025-06-27 09:26:21,993 - INFO - Approaching expected limit (804 calls), currently at 850 - checking if we should continue
+2025-06-27 09:26:24,000 - INFO - Navigating from page 17 to page 18
+2025-06-27 09:26:24,000 - INFO - 🔗 Next page URL: https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/calls-for-proposals?isExactMatch=true&status=31094501%2C31094502&order=DESC&pageNumber=18&pageSize=50&sortBy=startDate
+2025-06-27 09:26:24,258 - INFO - Closing driver...
+2025-06-27 09:26:24,412 - INFO - 
+============================================================
+2025-06-27 09:26:24,412 - INFO - SCRAPING RESULTS ANALYSIS
+2025-06-27 09:26:24,412 - INFO - ============================================================
+
+Total calls scraped: 850
+
+Status counts:
+- Forthcoming: 850
+
+Total number of status changes: 0
+
+--- First 3 calls ---
+Call 23:
+  Status: Forthcoming
+  Title: MSCA Choose Europe for Science 2025
+  Link: https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/HORIZON-MSCA-2025-COFUND-02-01?isExactMatch=true&status=31094501,31094502&order=DESC&pageNumber=1&pageSize=50&sortBy=startDate
+
+Call 24:
+  Status: Forthcoming
+  Title: Development of sustainable and design-to-cost batteries with (energy-)efficient manufacturing processes and based on advanced and safer materials (Batt4EU Partnership)
+  Link: https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/HORIZON-CL5-2026-01-D2-01?isExactMatch=true&status=31094501,31094502&order=DESC&pageNumber=1&pageSize=50&sortBy=startDate
+
+Call 25:
+  Status: Forthcoming
+  Title: Monitoring and Evaluation of the Societal Readiness Pilot
+  Link: https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/HORIZON-CL5-2026-01-D2-09?isExactMatch=true&status=31094501,31094502&order=DESC&pageNumber=1&pageSize=50&sortBy=startDate
+
+--- Last call (#850) ---
+Status: Forthcoming
+Title: Maturing of a European industrial ecosystem for security-certified terrestrial QKD technologies and systems
+Link: https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/DIGITAL-IRIS2-2025-QCI-01?isExactMatch=true&status=31094501,31094502&order=DESC&pageNumber=1&pageSize=50&sortBy=startDate
+
+--- VALIDATION ---
+❌ ERROR: Scraped 850 calls, but filter should only have 804!
+This suggests the scraper went beyond the filtered results.
