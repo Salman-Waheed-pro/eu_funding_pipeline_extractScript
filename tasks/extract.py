@@ -19,6 +19,57 @@ from datetime import datetime
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
 
+def handle_cookie_banner(driver):
+    """Handle cookie banner - shortest version"""
+    try:
+        WebDriverWait(driver, 5).until(EC.presence_of_element_located((By.CSS_SELECTOR, "div.wt-cck--container")))
+        # Just hide it with JavaScript - fastest method
+        driver.execute_script("document.querySelector('div.wt-cck--container').style.display = 'none';")
+        logger.info("Cookie banner hidden")
+        time.sleep(1)
+    except:
+        pass  # No banner or already handled
+
+def deselect_closed_status(driver):
+    """Deselect 'Closed' filter - shortest version"""
+    try:
+        # Click filter button
+        filter_btn = WebDriverWait(driver, 10).until(
+            EC.element_to_be_clickable((By.XPATH, "//button[.//span[contains(text(),'Submission status')]]"))
+        )
+        driver.execute_script("arguments[0].click();", filter_btn)
+        time.sleep(2)
+        
+        # Find and click closed label if checked
+        closed_label = driver.find_element(By.XPATH, "//label[contains(@class, 'eui-label') and normalize-space(text())='Closed']")
+        checkbox_id = closed_label.get_attribute("for")
+        if driver.find_element(By.ID, checkbox_id).is_selected():
+            driver.execute_script("arguments[0].click();", closed_label)
+            logger.info("Deselected 'Closed' filter")
+        time.sleep(2)
+    except Exception as e:
+        logger.warning(f"Filter deselection failed: {e}")
+
+def click_next_page(driver):
+    """Click next page button - shortest version, JavaScript only"""
+    try:
+        # Find next button by icon and get parent button
+        icon = WebDriverWait(driver, 10).until(
+            EC.presence_of_element_located((By.CSS_SELECTOR, "eui-icon-svg[icon='eui-caret-right'][aria-label='Go to next page']"))
+        )
+        next_btn = icon.find_element(By.XPATH, "./ancestor::button[1]")
+        
+        # Check if disabled
+        if next_btn.get_attribute("aria-disabled") == "true":
+            return False
+            
+        # Always use JavaScript click to avoid interception
+        driver.execute_script("arguments[0].click();", next_btn)
+        time.sleep(3)
+        return True
+    except:
+        return False
+
 class FundingOpportunitiesScraper:
     """Encapsulates scraping logic with better error handling and reusability"""
     
@@ -50,6 +101,20 @@ class FundingOpportunitiesScraper:
         service = Service("/usr/bin/chromedriver")
         self.driver = webdriver.Chrome(service=service, options=chrome_options)
         return self.driver
+    
+    def handle_initial_page_setup(self):
+        """Handle cookie banner and deselect closed filter on first page load"""
+        if not self.first_page_processed:
+            logger.info("Handling initial page setup (cookies and filters)")
+            
+            # Handle cookie banner
+            handle_cookie_banner(self.driver)
+            
+            # Deselect closed status filter
+            deselect_closed_status(self.driver)
+            
+            self.first_page_processed = True
+            logger.info("Initial page setup completed")
     
     @contextmanager
     def tab_context(self, url):
@@ -496,28 +561,73 @@ class FundingOpportunitiesScraper:
             **detailed_sections
         }
     
-    def scrape_page(self, page_number, page_size=50, start_index=0, end_index=None):
+    def navigate_to_page(self, page_number):
         """
-        Scrape a single page of funding opportunities with option to limit to specific range
-        start_index and end_index allow processing only specific cards (0-based indexing)
+        Navigate to a specific page using continuous navigation approach
+        Builds up from page 1 by clicking next repeatedly
         """
-        url = (
-            f"https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/"
-            f"opportunities/calls-for-proposals?order=DESC&pageNumber={page_number}"
-            f"&pageSize={page_size}&sortBy=startDate&isExactMatch=true"
-            f"&status=31094501,31094502"
+        # Start from base URL (page 1)
+        base_url = (
+            "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/"
+            "opportunities/calls-for-proposals?order=DESC&pageNumber=1"
+            "&pageSize=50&sortBy=startDate&isExactMatch=true"
+            "&status=31094501,31094502"
         )
         
-        self.driver.get(url)
+        self.driver.get(base_url)
         
+        # Handle initial setup only on first page load
+        self.handle_initial_page_setup()
+        
+        # Wait for page to load completely
         try:
             WebDriverWait(self.driver, self.wait_time).until(
                 EC.presence_of_element_located((By.TAG_NAME, "eui-card-header"))
             )
         except Exception as e:
-            logger.error(f"Error waiting for page to load: {e}")
+            logger.error(f"Error waiting for page 1 to load: {e}")
+            raise
+        
+        # If we need page 1, we're already there
+        if page_number == 1:
+            logger.info("Already on page 1")
+            return True
+        
+        # Navigate to target page by clicking next
+        current_page = 1
+        while current_page < page_number:
+            logger.info(f"Navigating from page {current_page} to page {current_page + 1}")
+            
+            if not click_next_page(self.driver):
+                logger.error(f"Could not navigate to page {current_page + 1}, reached end of results")
+                return False
+            
+            # Wait for new page to load
+            try:
+                WebDriverWait(self.driver, self.wait_time).until(
+                    EC.presence_of_element_located((By.TAG_NAME, "eui-card-header"))
+                )
+            except Exception as e:
+                logger.error(f"Error waiting for page {current_page + 1} to load: {e}")
+                return False
+            
+            current_page += 1
+        
+        logger.info(f"Successfully navigated to page {page_number}")
+        return True
+    
+    def scrape_page(self, page_number, page_size=50, start_index=0, end_index=None):
+        """
+        Scrape a single page of funding opportunities with option to limit to specific range
+        start_index and end_index allow processing only specific cards (0-based indexing)
+        Uses navigation approach instead of direct URL construction
+        """
+        # Navigate to the target page
+        if not self.navigate_to_page(page_number):
+            logger.error(f"Failed to navigate to page {page_number}")
             return []
         
+        # Find cards on current page
         cards = self.driver.find_elements(By.TAG_NAME, "eui-card-header")
         
         if not cards:
@@ -580,7 +690,7 @@ class FundingOpportunitiesScraper:
 class FetchFundingOpportunities(luigi.Task):
     """Luigi task for fetching EU funding opportunities"""
     
-    max_pages = luigi.IntParameter(default=None)
+    max_pages = luigi.IntParameter(default=3)
     page_size = luigi.IntParameter(default=50)
     output_file = luigi.Parameter(default="calls_raw.json")
     
@@ -611,7 +721,7 @@ class FetchFundingOpportunities(luigi.Task):
                     break
                 
                 all_calls.extend(page_calls)
-                logger.info(f"Page {page_num} completed. Found {len(page_calls)} calls. Total calls so far: {len(all_calls)}")
+                logger.info(f"Page {page_num} completed. Found {len(page_calls)}")
                 
                 # If we got fewer results than page_size, this might be the last page
                 if len(page_calls) < self.page_size:
