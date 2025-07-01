@@ -691,7 +691,7 @@ class FundingOpportunitiesScraper:
 class FetchFundingOpportunities(luigi.Task):
     """Luigi task for fetching EU funding opportunities"""
     
-    max_pages = luigi.IntParameter(default=2)
+    max_pages = luigi.IntParameter(default=None)
     page_size = luigi.IntParameter(default=50)
     output_file = luigi.Parameter(default="calls_raw.json")
     
